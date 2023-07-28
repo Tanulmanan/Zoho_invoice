@@ -1,0 +1,46 @@
+{% extends "_blank.html" %}
+
+{% block qux_content %}
+  <div class="container">
+    <div id="splash" class="qux-jumbotron">
+      <div class="qux-jumbotron-content">
+        <div>
+          <h1 class="my-5">
+            <i class="fas fa-space-station-moon"></i>
+            Page not found!
+          </h1>
+          <h2 class="my-5">
+            This is not the page you are looking for.
+          </h2>
+          <div class="my-5">
+            Go back <a href="{% url 'home' %}">home</a> or <a href="mailto:dragon@finmachines.com">email us</a> if you cannot find what you are looking for.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock qux_content %}
+
+{% block customjs %}
+  {{ block.super }}
+  <script>
+    function resizeCover() {
+      let div = $("#splash");
+      let w = div.width();
+      let h = screen.height;
+      if (w < 575) {
+          h = h - 80;
+      } else {
+          h = w < 1200 ? w * 0.50 : 600;
+      }
+      div.css("min-height", h + "px");
+    }
+
+    $(document).ready(function () {
+      resizeCover();
+      $(window).resize(function () {
+        resizeCover()
+      });
+    });
+  </script>
+{% endblock customjs %}

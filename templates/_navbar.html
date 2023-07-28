@@ -1,0 +1,64 @@
+{% load static %}
+<nav id="nav" class="navbar navbar-expand-lg navbar-fixed-top custom-bg-navbar navbar-light py-3">
+  <div class="container-fluid p-0">
+    <a class="navbar-brand mr-lg-2" href="{% url 'home' %}">
+      <span class="font-weight-bold">Financial Machines</span> &bullet; Qjango
+    </a>
+
+
+    <button type="button"
+            class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse">
+      <div class="nav navbar-default navbar-nav ml-auto">
+        <!-- Services -->
+        <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'api' %}">API</a>
+          </li>
+        {% endif %}
+
+        <!-- Pricing -->
+        <li class="nav-item">
+          <a class="nav-link">Pricing</a>
+        </li>
+
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link">About</a>
+        </li>
+
+        <!-- Logout -->
+        {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button"
+               data-toggle="dropdown" aria-expanded="false">Account</a>
+              <div class="dropdown-menu dropdown-menu-right">
+                  <div class="dropdown-header">{{ user.email }}</div>
+                  <div class="dropdown-divider"></div>
+            <a class="dropdown-item-text">Settings</a>
+            <a class="dropdown-item" href="{% url 'qux_token:home' %}">API Tokens</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'qux_auth:logout' %}">Logout</a>
+          </div>
+        {% else %}
+            <li class="nav-item">
+                <a href="{% url 'qux_auth:login' %}" class="nav-link">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'qux_auth:signup' %}" class="nav-link">Register</a>
+            </li>
+
+        {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

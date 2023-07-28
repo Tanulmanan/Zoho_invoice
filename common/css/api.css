@@ -1,0 +1,70 @@
+.api-docs {
+  --get: #337ab780;
+  --post: #5cb85c80;
+  --delete: #d9534f80;
+  --put: #f0ad4e80;
+  --patch: #b7b7b780;
+}
+@media screen and (max-width: 575px) {
+  .api-docs {
+    font-size: 0.75rem !important;
+  }
+}
+.api {
+  border-radius: 0.25rem;
+  background-color: rgba(32, 64, 128, 0.10);
+  border-width: 0;
+}
+.api.get {
+  border-color: var(--get);
+  background-color: var(--get);
+}
+.api.post {
+  border-color: var(--post);
+  background-color: var(--post);
+}
+.api.delete {
+  border-color: var(--delete);
+  background-color: var(--delete);
+}
+.api.put {
+  border-color: var(--put);
+  background-color: var(--put);
+}
+.api.patch {
+  border-color: var(--patch);
+  background-color: var(--patch);
+}
+
+.col-api-method {
+  min-width: 80px;
+}
+.api-method {
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  color: white;
+  font-weight: 300;
+  font-family: "Monaco", "Fira Code", "Roboto Mono", monospace;
+}
+.api-method.get {
+  background-color: var(--get);
+}
+.api-method.post {
+  background-color: var(--post)
+}
+.api-method.delete {
+  background-color: var(--delete);
+}
+.api-method.put {
+  background-color: var(--put);
+}
+.api-method.patch {
+  background-color: var(--patch);
+}
+.api-path {
+  padding: 0.5rem;
+  font-family: "Monaco", "Fira Code", "Roboto Mono", monospace;
+  overflow-wrap: anywhere;
+}

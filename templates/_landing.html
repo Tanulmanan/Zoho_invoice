@@ -1,0 +1,55 @@
+{% extends "_blank.html" %}
+
+{% block customstyle %}
+{{ block.super }}
+<style>
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.custom-bg-navbar {
+  background-color: rgb(48, 96, 192);
+}
+.navbar-brand {
+  color: white !important;
+}
+.nav-link {
+  color: white !important;
+  border: 1px solid transparent;
+}
+.nav-link:focus, .nav-link:hover {
+  color: white !important;
+}
+</style>
+{% endblock %}
+
+{% block footer %}
+{% include '_footer.html' %}
+{% endblock footer %}
+
+{% block customjs %}
+  {{ block.super }}
+  <script>
+    function resizeCover() {
+      let div = $("#splash");
+      let w = div.width();
+      let h = screen.height;
+      if (w < 575) {
+          h = h < 750 ? h - 72 : 750;
+      } else {
+          h = w < 1200 ? w * 0.50 : 600;
+      }
+      div.css("min-height", h + "px");
+    }
+
+    $(document).ready(function () {
+      resizeCover();
+      $(window).resize(function () {
+        resizeCover()
+      });
+    });
+
+    $("#navbar-brand-image").attr("src", "{{ site.baseurl }}/static/logo/financialmachines_long_inverse.svg");
+  </script>
+{% endblock customjs %}
